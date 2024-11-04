@@ -1,0 +1,42 @@
+{% include 'admin/admin_header.html' %}
+
+
+<center>
+<form action="" method="post" >
+    <h1>Manage Room</h1>
+    <table class="table" style="width: 500px;">
+        <tr>
+            <th>Room No</th>
+            <td><input type="text" required class="form-control" name="room_no"></td>
+        </tr>
+
+        <tr>
+            <th>Room Description</th>
+            <td><textarea name="description" id="" cols="30" rows="10"></textarea></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input class="btn btn-success" type="submit" name="submit"></td>
+        </tr>
+    </table>
+    
+</form>
+
+<table border="2">
+    <tr>
+        <th>Slno</th>
+        <th>Room No</th>
+        <th>Description</th>
+    </tr>
+    {% for i in d %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.room_no}}</td>
+        <td>{{i.capacity}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</center>
+
+
+{% include 'admin/admin_footer.html' %}

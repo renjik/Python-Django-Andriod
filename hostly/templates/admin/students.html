@@ -1,0 +1,67 @@
+{% include 'admin/admin_header.html' %}
+<br><br>
+<center>
+<h1>Students</h1>
+
+<br><br>
+
+{% if data %}
+
+
+    <table class="table">
+        <tr>
+                <th>Sl No</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Dob</th>
+                <th>HouseName</th>
+                <th>Post</th>
+                <th>City</th>
+                <th>District</th>
+                <th>State</th>
+                <th>Pin</th>
+                <th>Course</th>
+                <th>Sem</th>
+                <th>Phone</th>
+                <th>ParentsPhone</th>
+                <th>Photo</th>
+                <th colspan="2">Accept/Reject</th>
+
+        </tr>
+        {% for i in data %}
+        <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.student_name}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.dob}}</td>
+                <td>{{i.house_name}}</td>
+                <td>{{i.post_office}}</td>
+                <td>{{i.city}}</td>
+                <td>{{i.district}}</td>
+                <td>{{i.state }}</td>
+                <td>{{i.pin_no}}</td>
+                <td>{{i.COURSE.course_name}}</td>
+                <td>{{i.sem}}</td>
+                <td>{{i.phone_number }}</td>
+                <td>{{i.parents_phone}}</td>
+                <td><img src="media/{{ i.photo}}" style="width:50px; height:50;"></td>
+                {% if i.LOGIN.usertype == "pending"  %}
+                <td><a href="../admin_accept_student/{{i.LOGIN_id}}" class="btn btn-success">Accept</a></td>
+                <td><a href="../admin_reject_student/{{i.LOGIN_id}}" class="btn btn-danger">Reject</a></td>
+                {% elif i.LOGIN.usertype == "rejected"  %}
+                <td><a href="../admin_accept_student/{{i.LOGIN_id}}" class="btn btn-success">Accept</a></td>
+                {% else %}
+                <td><a href="../admin_reject_student/{{i.LOGIN_id}}" class="btn btn-success">Reject</a></td>
+                {% endif %}
+
+        </tr>
+
+        {% endfor %}
+    </table>
+{% else %}
+    <h4 class="wow fadeInUp" data-wow-delay="0.4s">No Details Available</h4>
+{% endif %}
+
+</center>
+
+{% include 'admin/admin_footer.html' %}

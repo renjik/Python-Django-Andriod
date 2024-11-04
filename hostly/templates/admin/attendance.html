@@ -1,0 +1,34 @@
+{% include 'admin/admin_header.html' %}
+<br><br>
+<center>
+<h1>Attendance</h1>
+
+
+{% if data %}
+
+
+    <table class="table">
+        <tr>
+                <th>Sl No</th>
+                <th>Student</th>
+                <th>Date</th>
+                <th>Status</th>
+
+        </tr>
+        {% for i in data %}
+        <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.STUDENT.student_name}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.status}}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+{% else %}
+    <h4 class="wow fadeInUp" data-wow-delay="0.4s">No Details Available</h4>
+{% endif %}
+
+</center>   
+
+{% include 'admin/admin_footer.html' %}

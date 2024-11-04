@@ -1,0 +1,50 @@
+{% include 'admin/admin_header.html' %}
+<br><br>
+<center>
+ <h1>Complaint</h1>   
+
+<br><br>
+
+{% if data %}
+
+
+    <table class="table" style="width: 500px;">
+        <tr>
+                <th>Sl No</th>
+                <th>Student</th>
+                <th>Subject</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Reply</th>
+                <th colspan="2">Action</th>
+
+        </tr>
+        {% for i in data %}
+        <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.STUDENT.student_name}}</td>
+                <td>{{i.subject}}</td>
+                <td>{{i.description}}</td>
+                <td>{{i.date_of_complaint}}</td>
+                <td>{{i.reply}}</td>
+                {% if i.reply == "pending"  %}
+                <td><a href="../admin_reply_complaint/{{i.id}}" class="btn btn-success">Reply</a></td>
+                {% else %}
+                 <td>Replied</td>
+                {% endif %}
+                
+
+
+
+
+        </tr>
+
+        {% endfor %}
+    </table>
+{% else %}
+    <h4 class="wow fadeInUp" data-wow-delay="0.4s">No Details Available</h4>
+{% endif %}
+
+</center>
+
+{% include 'admin/admin_footer.html' %}

@@ -1,0 +1,56 @@
+{% include 'admin/admin_header.html' %}
+<br><br>
+<center>
+<h1>Warden</h1>
+<a href="admin_add_warden" class="btn btn-success">Add Warden</a>
+<br><br>
+
+{% if data %}
+
+
+    <table class="table">
+        <tr>
+                <th>Sl No</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Post</th>
+                <th>City</th>
+                <th>District</th>
+                <th>Pin</th>
+                <th>Photo</th>
+                <th colspan="2">Edit/Delete</th>
+
+        </tr>
+        {% for i in data %}
+        <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.fname}}</td>
+                <td>{{i.lname}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phone_no}}</td>
+                <td>{{i.post_office}}</td>
+                <td>{{i.city}}</td>
+                <td>{{i.district }}</td>
+                <td>{{i.pin_no}}</td>
+                <td><img src="{{ i.photo}}" style="width:50px; height:50;"></td>
+                <td><a href="../admin_edit_warden/{{i.id}}" class="btn btn-success">Edit</a></td>
+                <td><a href="../admin_delete_warden/{{i.id}}" class="btn btn-danger">Delete</a></td>
+
+
+
+
+        </tr>
+
+        {% endfor %}
+    </table>
+{% else %}
+    <h4 class="wow fadeInUp" data-wow-delay="0.4s">No Details Available</h4>
+{% endif %}
+
+</center>
+
+{% include 'admin/admin_footer.html' %}

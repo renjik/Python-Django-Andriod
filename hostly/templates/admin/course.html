@@ -1,0 +1,42 @@
+{% include 'admin/admin_header.html' %}
+<br><br>
+<center>
+ <h1>Courses</h1>   
+<a class="btn btn-success" href="admin_add_course">Add Course</a>
+<br><br>
+
+{% if data %}
+
+
+    <table class="table" style="width: 500px;">
+        <tr>
+                <th>Sl No</th>
+                <th>Department</th>
+                <th>Course</th>
+                <th>Type</th>
+                <th colspan="2">Edit/Delete</th>
+
+        </tr>
+        {% for i in data %}
+        <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.DEPARTMENT.department_name}}</td>
+                <td>{{i.course_name}}</td>
+                <td>{{i.type}}</td>
+                <td><a href="../admin_edit_course/{{i.id}}" class="btn btn-success">Edit</a></td>
+                <td><a href="../admin_delete_course/{{i.id}}" class="btn btn-danger">Delete</a></td>
+
+
+
+
+        </tr>
+
+        {% endfor %}
+    </table>
+{% else %}
+    <h4 class="wow fadeInUp" data-wow-delay="0.4s">No Details Available</h4>
+{% endif %}
+
+</center>
+
+{% include 'admin/admin_footer.html' %}

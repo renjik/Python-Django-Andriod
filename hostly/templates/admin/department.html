@@ -1,0 +1,41 @@
+{% include 'admin/admin_header.html' %}
+<br><br>
+<center>
+<h1>Department</h1>
+<a class="btn btn-success" href="admin_add_department">Add Department</a>
+<br><br>
+
+
+
+
+{% if data1 %}
+
+
+    <table class="table">
+        <tr>
+                <th>Sl No</th>
+                <th>Department</th>
+                <th colspan="2">Edit/Delete</th>
+
+        </tr>
+        {% for i in data1 %}
+        <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.department_name}}</td>
+                <td><a href="../admin_edit_dep/{{i.id}}" class="btn btn-success">Edit</a></td>
+                <td><a href="../admin_delete_dep/{{i.id}}" class="btn btn-danger">Delete</a></td>
+
+
+
+
+        </tr>
+
+        {% endfor %}
+    </table>
+{% else %}
+    <h4 class="wow fadeInUp" data-wow-delay="0.4s">No Details Available</h4>
+{% endif %}
+</center>
+
+
+{% include 'admin/admin_footer.html' %}

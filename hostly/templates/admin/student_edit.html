@@ -1,0 +1,209 @@
+{% include 'admin/admin_header.html' %}
+
+<center>
+<h1>Edit Student </h1>
+<form action="" method="post" enctype="multipart/form-data" >
+    <h1></h1>
+    <table class="table" style="width: 500px;">
+        <tr>
+            <th>Name</th>
+            <td><input type="text" required class="form-control" name="name" value="{{data.student_name}}"></td>
+        </tr>
+        <tr>
+            <th>Gender:</th>
+            <td>
+                {% if data.gender == 'Male' %}
+                    <label>
+                        <input type="radio" name="Gender" value="Male" required checked> Male
+                    </label>
+                    <label>
+                        <input type="radio" name="Gender" value="Female" required> Female
+                    </label>
+                    <label>
+                        <input type="radio" name="Gender" value="Other" required> Other
+                    </label>
+                {% elif data.gender == 'Female' %}
+                <label>
+                    <input type="radio" name="Gender" value="Male" required > Male
+                </label>
+                <label>
+                    <input type="radio" name="Gender" value="Female" required checked> Female
+                </label>
+                <label>
+                    <input type="radio" name="Gender" value="Other" required> Other
+                </label>
+                {% else %}
+                <label>
+                    <input type="radio" name="Gender" value="Male" required > Male
+                </label>
+                <label>
+                    <input type="radio" name="Gender" value="Female" required > Female
+                </label>
+                <label>
+                    <input type="radio" name="Gender" value="Other" required checked> Other
+                </label>
+
+
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Dob</th>
+            <td><input type="date" required class="form-control" name="dob" value="{{data.dob}}"></td>
+        </tr>
+        <tr>
+            <th>House</th>
+            <td><input type="text" required class="form-control" name="house" value="{{data.house_name}}"></td>
+        </tr>
+        <tr>
+            <th>Post</th>
+            <td><input type="text" required class="form-control" name="post" value="{{data.post_office}}"></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td><input type="text" required class="form-control" name="city" value="{{data.city}}"></td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td><input type="text" required class="form-control" name="district" value="{{data.district}}"></td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <td><input type="text" required class="form-control" name="state" value="{{data.state}}"></td>
+        </tr>
+        <tr>
+            <th>Pin</th>
+            <td><input type="text" required class="form-control" name="pin" value="{{data.pin_no}}"></td>
+        </tr>
+        <tr>
+            <th>Course</th>
+            <td> 
+                <select name="course" id="" required>
+                <option value="{{data.COURSE.id}}" selected>{{data.COURSE.course_name}}</option>
+                {% for i in data1 %}
+                <option value="{{i.id}}">{{i.course_name}}</option>
+                {% endfor %}
+                </select>
+            </td>
+       </tr>
+        <tr>
+            <th>Sem</th>
+            <td><input type="text" required class="form-control" name="sem" value="{{data.sem}}"></td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><input type="text" required class="form-control" name="phone" value="{{data.phone_number}}"></td>
+        </tr>
+        <tr>
+            <th>ParentsPhone</th>
+            <td><input type="text" required class="form-control" name="parentsphone" value="{{data.parents_phone}}"></td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td><input type="file" required class="form-control" name="photo"></td>
+        </tr>
+
+
+
+
+        <tr>
+            <td colspan="2" align="center"><input class="btn btn-success" type="submit" name="submit"></td>
+        </tr>
+    </table>
+    
+</form>
+<center>
+
+    <script src="
+    https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    
+    <script>
+        $(function() {
+            $("input[name='name']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+    
+            });
+            $("input[name='lname']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+    
+            });
+    
+            $("input[name='pickup_point']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+    
+            });
+            $("input[name='student_class']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+    
+            });
+            $("input[name='student_division']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+    
+            });
+            $("input[name='city']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+    
+            });
+            $("input[name='district']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+    
+            });
+            $("input[name='state']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+    
+            });
+           
+            $("input[name='pin']").on('input', function(e) {
+                let value = $(this).val().replace(/[^0-9]/g, '');
+                if (value.length > 10) {
+                    value = value.slice(0, 10); // Limit to 10 digits
+                }
+                $(this).val(value);
+            });
+            $("input[name='sem']").on('input', function(e) {
+                let value = $(this).val().replace(/[^0-9]/g, '');
+                if (value.length > 10) {
+                    value = value.slice(0, 10); // Limit to 10 digits
+                }
+                $(this).val(value);
+            });
+            $("input[name='phone']").on('input', function(e) {
+                let value = $(this).val().replace(/[^0-9]/g, '');
+                if (value.length > 10) {
+                    value = value.slice(0, 10); // Limit to 10 digits
+                }
+                $(this).val(value);
+            });
+            $("input[name='parentsphone']").on('input', function(e) {
+                let value = $(this).val().replace(/[^0-9]/g, '');
+                if (value.length > 10) {
+                    value = value.slice(0, 10); // Limit to 10 digits
+                }
+                $(this).val(value);
+            });
+        
+            $("input[name='']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+    
+            });
+            $("input[name='uname']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+    
+            });
+                
+            $("input[name='psd']").on('input', function(e) {
+                $(this).val($(this).val().replace(/[^0-9A-Za-z@/. ]/g, ''));
+                
+            });
+    
+    
+    
+    
+    
+    
+     });
+    
+    </script>    
+
+{% include 'admin/admin_footer.html' %}

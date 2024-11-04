@@ -1,0 +1,188 @@
+{% include 'admin/admin_header.html' %}
+
+<center>
+<h1>Add Student </h1>
+<form action="" method="post" enctype="multipart/form-data" >
+    <h1></h1>
+    <table class="table" style="width: 500px;">
+        <tr>
+            <th>Name</th>
+            <td><input type="text" required class="form-control" name="name"></td>
+        </tr>
+        <tr>
+            <th>Gender:</th>
+            <td>
+                <input type="radio" name="Gender" value="Male" required> Male</label>
+                <input type="radio" name="Gender" value="Female" required> Female</label>
+                <input type="radio" name="Gender" value="Other" required> Other</label>
+            </td>
+        </tr>
+        <tr>
+            <th>Dob</th>
+            <td><input type="date" required class="form-control" name="dob"></td>
+        </tr>
+        <tr>
+            <th>House</th>
+            <td><input type="text" required class="form-control" name="house"></td>
+        </tr>
+        <tr>
+            <th>Post</th>
+            <td><input type="text" required class="form-control" name="post"></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td><input type="text" required class="form-control" name="city"></td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td><input type="text" required class="form-control" name="district"></td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <td><input type="text" required class="form-control" name="state"></td>
+        </tr>
+        <tr>
+            <th>Pin</th>
+            <td><input type="text" required class="form-control" name="pin"></td>
+        </tr>
+        <tr>
+            <th>Course</th>
+            <td> 
+                <select name="course" id="" required>
+                <option value="" selected disabled>Select Course</option>
+                {% for i in data %}
+                <option value="{{i.id}}">{{i.course_name}}</option>
+                {% endfor %}
+                </select>
+            </td>
+       </tr>
+        <tr>
+            <th>Sem</th>
+            <td><input type="text" required class="form-control" name="sem"></td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><input type="text" required class="form-control" name="phone"></td>
+        </tr>
+        <tr>
+            <th>ParentsPhone</th>
+            <td><input type="text" required class="form-control" name="parentsphone"></td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td><input type="file" required class="form-control" name="photo"></td>
+        </tr>
+        <tr>
+            <th>Username</th>
+            <td><input type="text" required class="form-control" name="uname"></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td><input type="password" required class="form-control" name="pass"></td>
+        </tr>
+
+
+
+
+        <tr>
+            <td colspan="2" align="center"><input class="btn btn-success" type="submit" name="submit"></td>
+        </tr>
+    </table>
+    
+</form>
+</center>
+
+
+<script src="
+https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+
+<script>
+    $(function() {
+        $("input[name='name']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        $("input[name='lname']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+
+        $("input[name='pickup_point']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+		$("input[name='student_class']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+
+        });
+		$("input[name='student_division']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+
+        });
+		$("input[name='city']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+		$("input[name='district']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        $("input[name='state']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+       
+        $("input[name='pin']").on('input', function(e) {
+            let value = $(this).val().replace(/[^0-9]/g, '');
+            if (value.length > 10) {
+                value = value.slice(0, 10); // Limit to 10 digits
+            }
+            $(this).val(value);
+        });
+        $("input[name='sem']").on('input', function(e) {
+            let value = $(this).val().replace(/[^0-9]/g, '');
+            if (value.length > 10) {
+                value = value.slice(0, 10); // Limit to 10 digits
+            }
+            $(this).val(value);
+        });
+        $("input[name='phone']").on('input', function(e) {
+            let value = $(this).val().replace(/[^0-9]/g, '');
+            if (value.length > 10) {
+                value = value.slice(0, 10); // Limit to 10 digits
+            }
+            $(this).val(value);
+        });
+        $("input[name='parentsphone']").on('input', function(e) {
+            let value = $(this).val().replace(/[^0-9]/g, '');
+            if (value.length > 10) {
+                value = value.slice(0, 10); // Limit to 10 digits
+            }
+            $(this).val(value);
+        });
+    
+        $("input[name='']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+
+        });
+        $("input[name='uname']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+            
+        $("input[name='psd']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9A-Za-z@/. ]/g, ''));
+            
+        });
+
+
+
+
+
+
+ });
+
+</script>
+
+{% include 'admin/admin_footer.html' %}
